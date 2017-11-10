@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8BCAC46D-EECB-472C-A28E-A1A94E92492C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Discord.Net, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.0.9.6\lib\net45\Discord.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Discord.Net.Commands, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Discord.Net.Commands.0.9.6\lib\net45\Discord.Net.Commands.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.1.1.1\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.1.1\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Interactive.Async, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Interactive.Async.3.1.1\lib\net45\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.14.1\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BakiBot.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Audible_God.txt" />
+    <Content Include="jeffkaplan.jpg" />
+    <Content Include="OOCB\_%281%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2810%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%280%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%28101%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2811%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2812%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2813%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2814%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2815%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2816%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2817%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2818%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2819%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%282%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2820%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2821%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2822%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2823%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2824%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2825%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2826%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2827%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2828%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2829%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%283%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2830%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2831%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2832%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2833%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2834%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2835%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2836%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2837%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2838%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2839%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%284%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2840%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2841%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2842%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2843%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2844%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2845%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2846%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2847%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2848%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2849%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%285%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2850%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2851%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2852%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2853%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2854%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2855%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2856%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2857%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2858%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2859%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%286%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2860%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2861%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2862%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2863%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2864%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2865%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2866%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2867%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2868%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2869%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%287%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2870%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2871%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2872%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2873%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2874%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2875%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2876%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2877%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2878%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2879%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%288%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2880%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2881%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2882%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2883%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2884%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2885%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2886%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2887%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2888%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2889%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%289%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2890%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2891%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2892%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2893%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2894%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2895%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2896%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2897%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2898%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OOCB\_%2899%29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Overwatch\Abilities\Ana.txt" />
+    <Content Include="Overwatch\Abilities\Bastion.txt" />
+    <Content Include="Overwatch\Abilities\Doomfist.txt" />
+    <Content Include="Overwatch\Abilities\Dva.txt" />
+    <Content Include="Overwatch\Abilities\Genji.txt" />
+    <Content Include="Overwatch\Abilities\Hanzo.txt" />
+    <Content Include="Overwatch\Abilities\Junkrat.txt" />
+    <Content Include="Overwatch\Abilities\Lucio.txt" />
+    <Content Include="Overwatch\Abilities\McCree.txt" />
+    <Content Include="Overwatch\Abilities\Mei.txt" />
+    <Content Include="Overwatch\Abilities\Mercy.txt" />
+    <Content Include="Overwatch\Abilities\Moira.txt" />
+    <Content Include="Overwatch\Abilities\Orisa.txt" />
+    <Content Include="Overwatch\Abilities\Pharah.txt" />
+    <Content Include="Overwatch\Abilities\Reaper.txt" />
+    <Content Include="Overwatch\Abilities\Reinhardt.txt" />
+    <Content Include="Overwatch\Abilities\Roadhog.txt" />
+    <Content Include="Overwatch\Abilities\Soldier.txt" />
+    <Content Include="Overwatch\Abilities\Sombra.txt" />
+    <Content Include="Overwatch\Abilities\Symmetra.txt" />
+    <Content Include="Overwatch\Abilities\Torbjorn.txt" />
+    <Content Include="Overwatch\Abilities\Tracer.txt" />
+    <Content Include="Overwatch\Abilities\Widowmaker.txt" />
+    <Content Include="Overwatch\Abilities\Winston.txt" />
+    <Content Include="Overwatch\Abilities\Zarya.txt" />
+    <Content Include="Overwatch\Abilities\Zenyatta.txt" />
+    <Content Include="Overwatch\Counters\Ana.txt" />
+    <Content Include="Overwatch\Counters\Bastion.txt" />
+    <Content Include="Overwatch\Counters\Doomfist.txt" />
+    <Content Include="Overwatch\Counters\Dva.txt" />
+    <Content Include="Overwatch\Counters\Genji.txt" />
+    <Content Include="Overwatch\Counters\Hanzo.txt" />
+    <Content Include="Overwatch\Counters\Junkrat.txt" />
+    <Content Include="Overwatch\Counters\Lucio.txt" />
+    <Content Include="Overwatch\Counters\McCree.txt" />
+    <Content Include="Overwatch\Counters\Mei.txt" />
+    <Content Include="Overwatch\Counters\Mercy.txt" />
+    <Content Include="Overwatch\Counters\Moira.txt" />
+    <Content Include="Overwatch\Counters\Orisa.txt" />
+    <Content Include="Overwatch\Counters\Pharah.txt" />
+    <Content Include="Overwatch\Counters\Reaper.txt" />
+    <Content Include="Overwatch\Counters\Reinhardt.txt" />
+    <Content Include="Overwatch\Counters\Roadhog.txt" />
+    <Content Include="Overwatch\Counters\Soldier.txt" />
+    <Content Include="Overwatch\Counters\Sombra.txt" />
+    <Content Include="Overwatch\Counters\Symmetra.txt" />
+    <Content Include="Overwatch\Counters\Torbjorn.txt" />
+    <Content Include="Overwatch\Counters\Tracer.txt" />
+    <Content Include="Overwatch\Counters\Widowmaker.txt" />
+    <Content Include="Overwatch\Counters\Winston.txt" />
+    <Content Include="Overwatch\Counters\Zarya.txt" />
+    <Content Include="Overwatch\Counters\Zenyatta.txt" />
+    <Content Include="Overwatch\Maps\Dorado.txt" />
+    <Content Include="Overwatch\Maps\Eichenwalde.txt" />
+    <Content Include="Overwatch\Maps\Gibraltar.txt" />
+    <Content Include="Overwatch\Maps\Hanamura.txt" />
+    <Content Include="Overwatch\Maps\Hollywood.txt" />
+    <Content Include="Overwatch\Maps\Lijiang_Tower.txt" />
+    <Content Include="Overwatch\Maps\Oasis.txt" />
+    <Content Include="Overwatch\Maps\Route_66.txt" />
+    <Content Include="Overwatch\Maps\Volskaya_Industries.txt" />
+    <Content Include="Scarce_had_to.jpg" />
+    <Content Include="Todd_Howard\1.jpg" />
+    <Content Include="Todd_Howard\10.jpg" />
+    <Content Include="Todd_Howard\100.jpg" />
+    <Content Include="Todd_Howard\101.png" />
+    <Content Include="Todd_Howard\102.jpg" />
+    <Content Include="Todd_Howard\103.jpg" />
+    <Content Include="Todd_Howard\104.png" />
+    <Content Include="Todd_Howard\105.jpg" />
+    <Content Include="Todd_Howard\106.jpg" />
+    <Content Include="Todd_Howard\107.png" />
+    <Content Include="Todd_Howard\108.jpg" />
+    <Content Include="Todd_Howard\109.png" />
+    <Content Include="Todd_Howard\11.jpg" />
+    <Content Include="Todd_Howard\110.png" />
+    <Content Include="Todd_Howard\111.jpg" />
+    <Content Include="Todd_Howard\112.png" />
+    <Content Include="Todd_Howard\113.png" />
+    <Content Include="Todd_Howard\114.png" />
+    <Content Include="Todd_Howard\115.jpg" />
+    <Content Include="Todd_Howard\116.jpg" />
+    <Content Include="Todd_Howard\117.jpg" />
+    <Content Include="Todd_Howard\118.jpg" />
+    <Content Include="Todd_Howard\119.jpg" />
+    <Content Include="Todd_Howard\12.jpg" />
+    <Content Include="Todd_Howard\120.jpg" />
+    <Content Include="Todd_Howard\121.png" />
+    <Content Include="Todd_Howard\122.jpg" />
+    <Content Include="Todd_Howard\123.jpg" />
+    <Content Include="Todd_Howard\124.jpg" />
+    <Content Include="Todd_Howard\125.jpg" />
+    <Content Include="Todd_Howard\126.png" />
+    <Content Include="Todd_Howard\127.png" />
+    <Content Include="Todd_Howard\128.jpg" />
+    <Content Include="Todd_Howard\129.png" />
+    <Content Include="Todd_Howard\13.jpg" />
+    <Content Include="Todd_Howard\130.jpg" />
+    <Content Include="Todd_Howard\131.jpg" />
+    <Content Include="Todd_Howard\132.jpg" />
+    <Content Include="Todd_Howard\133.jpg" />
+    <Content Include="Todd_Howard\134.jpg" />
+    <Content Include="Todd_Howard\135.png" />
+    <Content Include="Todd_Howard\136.jpg" />
+    <Content Include="Todd_Howard\137.png" />
+    <Content Include="Todd_Howard\138.jpg" />
+    <Content Include="Todd_Howard\139.jpg" />
+    <Content Include="Todd_Howard\14.jpg" />
+    <Content Include="Todd_Howard\140.jpg" />
+    <Content Include="Todd_Howard\141.jpg" />
+    <Content Include="Todd_Howard\142.png" />
+    <Content Include="Todd_Howard\143.png" />
+    <Content Include="Todd_Howard\144.png" />
+    <Content Include="Todd_Howard\145.jpg" />
+    <Content Include="Todd_Howard\146.jpg" />
+    <Content Include="Todd_Howard\147.jpg" />
+    <Content Include="Todd_Howard\148.png" />
+    <Content Include="Todd_Howard\149.jpg" />
+    <Content Include="Todd_Howard\15.jpg" />
+    <Content Include="Todd_Howard\150.jpg" />
+    <Content Include="Todd_Howard\151.jpg" />
+    <Content Include="Todd_Howard\152.jpg" />
+    <Content Include="Todd_Howard\153.jpg" />
+    <Content Include="Todd_Howard\154.png" />
+    <Content Include="Todd_Howard\155.jpg" />
+    <Content Include="Todd_Howard\156.jpg" />
+    <Content Include="Todd_Howard\157.jpg" />
+    <Content Include="Todd_Howard\158.png" />
+    <Content Include="Todd_Howard\159.jpg" />
+    <Content Include="Todd_Howard\16.jpg" />
+    <Content Include="Todd_Howard\160.png" />
+    <Content Include="Todd_Howard\161.jpg" />
+    <Content Include="Todd_Howard\162.jpg" />
+    <Content Include="Todd_Howard\163.jpg" />
+    <Content Include="Todd_Howard\164.jpg" />
+    <Content Include="Todd_Howard\165.jpg" />
+    <Content Include="Todd_Howard\166.png" />
+    <Content Include="Todd_Howard\167.jpg" />
+    <Content Include="Todd_Howard\168.jpg" />
+    <Content Include="Todd_Howard\169.jpg" />
+    <Content Include="Todd_Howard\17.jpg" />
+    <Content Include="Todd_Howard\170.jpg" />
+    <Content Include="Todd_Howard\171.png" />
+    <Content Include="Todd_Howard\172.jpg" />
+    <Content Include="Todd_Howard\173.jpg" />
+    <Content Include="Todd_Howard\174.jpg" />
+    <Content Include="Todd_Howard\175.png" />
+    <Content Include="Todd_Howard\176.jpg" />
+    <Content Include="Todd_Howard\177.jpg" />
+    <Content Include="Todd_Howard\178.jpg" />
+    <Content Include="Todd_Howard\179.jpg" />
+    <Content Include="Todd_Howard\18.png" />
+    <Content Include="Todd_Howard\180.jpg" />
+    <Content Include="Todd_Howard\181.jpg" />
+    <Content Include="Todd_Howard\182.jpg" />
+    <Content Include="Todd_Howard\183.jpg" />
+    <Content Include="Todd_Howard\184.jpg" />
+    <Content Include="Todd_Howard\185.jpg" />
+    <Content Include="Todd_Howard\186.png" />
+    <Content Include="Todd_Howard\187.jpg" />
+    <Content Include="Todd_Howard\188.jpg" />
+    <Content Include="Todd_Howard\189.jpg" />
+    <Content Include="Todd_Howard\19.jpg" />
+    <Content Include="Todd_Howard\190.jpg" />
+    <Content Include="Todd_Howard\191.jpg" />
+    <Content Include="Todd_Howard\192.png" />
+    <Content Include="Todd_Howard\193.jpg" />
+    <Content Include="Todd_Howard\194.png" />
+    <Content Include="Todd_Howard\195.jpg" />
+    <Content Include="Todd_Howard\196.jpg" />
+    <Content Include="Todd_Howard\197.jpg" />
+    <Content Include="Todd_Howard\198.jpg" />
+    <Content Include="Todd_Howard\199.jpg" />
+    <Content Include="Todd_Howard\2.jpg" />
+    <Content Include="Todd_Howard\20.png" />
+    <Content Include="Todd_Howard\200.jpg" />
+    <Content Include="Todd_Howard\201.jpg" />
+    <Content Include="Todd_Howard\202.png" />
+    <Content Include="Todd_Howard\203.png" />
+    <Content Include="Todd_Howard\204.jpg" />
+    <Content Include="Todd_Howard\205.jpg" />
+    <Content Include="Todd_Howard\206.jpg" />
+    <Content Include="Todd_Howard\207.jpg" />
+    <Content Include="Todd_Howard\208.jpg" />
+    <Content Include="Todd_Howard\209.png" />
+    <Content Include="Todd_Howard\21.png" />
+    <Content Include="Todd_Howard\210.jpg" />
+    <Content Include="Todd_Howard\211.jpg" />
+    <Content Include="Todd_Howard\212.jpg" />
+    <Content Include="Todd_Howard\213.jpg" />
+    <Content Include="Todd_Howard\214.jpg" />
+    <Content Include="Todd_Howard\215.png" />
+    <Content Include="Todd_Howard\216.jpg" />
+    <Content Include="Todd_Howard\217.jpg" />
+    <Content Include="Todd_Howard\218.jpg" />
+    <Content Include="Todd_Howard\219.jpg" />
+    <Content Include="Todd_Howard\22.jpg" />
+    <Content Include="Todd_Howard\220.jpg" />
+    <Content Include="Todd_Howard\221.jpg" />
+    <Content Include="Todd_Howard\222.jpg" />
+    <Content Include="Todd_Howard\223.jpg" />
+    <Content Include="Todd_Howard\224.jpg" />
+    <Content Include="Todd_Howard\225.jpg" />
+    <Content Include="Todd_Howard\226.jpg" />
+    <Content Include="Todd_Howard\227.jpg" />
+    <Content Include="Todd_Howard\228.jpg" />
+    <Content Include="Todd_Howard\229.png" />
+    <Content Include="Todd_Howard\23.jpg" />
+    <Content Include="Todd_Howard\230.png" />
+    <Content Include="Todd_Howard\231.jpg" />
+    <Content Include="Todd_Howard\232.png" />
+    <Content Include="Todd_Howard\233.jpg" />
+    <Content Include="Todd_Howard\234.jpg" />
+    <Content Include="Todd_Howard\235.png" />
+    <Content Include="Todd_Howard\236.jpg" />
+    <Content Include="Todd_Howard\237.jpg" />
+    <Content Include="Todd_Howard\238.png" />
+    <Content Include="Todd_Howard\239.jpg" />
+    <Content Include="Todd_Howard\24.jpg" />
+    <Content Include="Todd_Howard\240.png" />
+    <Content Include="Todd_Howard\241.png" />
+    <Content Include="Todd_Howard\242.jpg" />
+    <Content Include="Todd_Howard\243.jpg" />
+    <Content Include="Todd_Howard\244.jpg" />
+    <Content Include="Todd_Howard\245.jpg" />
+    <Content Include="Todd_Howard\246.jpg" />
+    <Content Include="Todd_Howard\247.jpg" />
+    <Content Include="Todd_Howard\248.jpg" />
+    <Content Include="Todd_Howard\249.jpg" />
+    <Content Include="Todd_Howard\25.jpg" />
+    <Content Include="Todd_Howard\250.jpg" />
+    <Content Include="Todd_Howard\251.jpg" />
+    <Content Include="Todd_Howard\252.png" />
+    <Content Include="Todd_Howard\253.jpg" />
+    <Content Include="Todd_Howard\254.jpg" />
+    <Content Include="Todd_Howard\26.jpg" />
+    <Content Include="Todd_Howard\27.jpg" />
+    <Content Include="Todd_Howard\28.png" />
+    <Content Include="Todd_Howard\29.jpg" />
+    <Content Include="Todd_Howard\3.jpg" />
+    <Content Include="Todd_Howard\30.png" />
+    <Content Include="Todd_Howard\31.png" />
+    <Content Include="Todd_Howard\32.jpg" />
+    <Content Include="Todd_Howard\33.jpg" />
+    <Content Include="Todd_Howard\34.jpg" />
+    <Content Include="Todd_Howard\35.jpg" />
+    <Content Include="Todd_Howard\36.jpg" />
+    <Content Include="Todd_Howard\37.jpg" />
+    <Content Include="Todd_Howard\38.jpg" />
+    <Content Include="Todd_Howard\39.jpg" />
+    <Content Include="Todd_Howard\4.png" />
+    <Content Include="Todd_Howard\40.png" />
+    <Content Include="Todd_Howard\41.jpg" />
+    <Content Include="Todd_Howard\42.jpg" />
+    <Content Include="Todd_Howard\43.png" />
+    <Content Include="Todd_Howard\44.jpg" />
+    <Content Include="Todd_Howard\45.png" />
+    <Content Include="Todd_Howard\46.jpg" />
+    <Content Include="Todd_Howard\47.jpg" />
+    <Content Include="Todd_Howard\48.png" />
+    <Content Include="Todd_Howard\49.png" />
+    <Content Include="Todd_Howard\5.jpg" />
+    <Content Include="Todd_Howard\50.png" />
+    <Content Include="Todd_Howard\51.jpg" />
+    <Content Include="Todd_Howard\52.jpg" />
+    <Content Include="Todd_Howard\53.png" />
+    <Content Include="Todd_Howard\54.jpg" />
+    <Content Include="Todd_Howard\55.png" />
+    <Content Include="Todd_Howard\56.png" />
+    <Content Include="Todd_Howard\57.jpg" />
+    <Content Include="Todd_Howard\58.jpg" />
+    <Content Include="Todd_Howard\59.png" />
+    <Content Include="Todd_Howard\6.jpg" />
+    <Content Include="Todd_Howard\60.png" />
+    <Content Include="Todd_Howard\61.png" />
+    <Content Include="Todd_Howard\62.jpg" />
+    <Content Include="Todd_Howard\63.jpg" />
+    <Content Include="Todd_Howard\64.png" />
+    <Content Include="Todd_Howard\65.jpg" />
+    <Content Include="Todd_Howard\66.png" />
+    <Content Include="Todd_Howard\67.jpg" />
+    <Content Include="Todd_Howard\68.jpg" />
+    <Content Include="Todd_Howard\69.jpg" />
+    <Content Include="Todd_Howard\7.jpg" />
+    <Content Include="Todd_Howard\70.jpg" />
+    <Content Include="Todd_Howard\71.jpg" />
+    <Content Include="Todd_Howard\72.png" />
+    <Content Include="Todd_Howard\73.jpg" />
+    <Content Include="Todd_Howard\74.jpg" />
+    <Content Include="Todd_Howard\75.jpg" />
+    <Content Include="Todd_Howard\76.png" />
+    <Content Include="Todd_Howard\77.jpg" />
+    <Content Include="Todd_Howard\78.png" />
+    <Content Include="Todd_Howard\79.png" />
+    <Content Include="Todd_Howard\8.jpg" />
+    <Content Include="Todd_Howard\80.png" />
+    <Content Include="Todd_Howard\81.jpg" />
+    <Content Include="Todd_Howard\82.jpg" />
+    <Content Include="Todd_Howard\83.jpg" />
+    <Content Include="Todd_Howard\84.jpg" />
+    <Content Include="Todd_Howard\85.jpg" />
+    <Content Include="Todd_Howard\86.jpg" />
+    <Content Include="Todd_Howard\87.jpg" />
+    <Content Include="Todd_Howard\88.jpg" />
+    <Content Include="Todd_Howard\89.jpg" />
+    <Content Include="Todd_Howard\9.jpg" />
+    <Content Include="Todd_Howard\90.png" />
+    <Content Include="Todd_Howard\91.jpg" />
+    <Content Include="Todd_Howard\92.jpg" />
+    <Content Include="Todd_Howard\93.jpg" />
+    <Content Include="Todd_Howard\94.jpg" />
+    <Content Include="Todd_Howard\95.jpg" />
+    <Content Include="Todd_Howard\96.jpg" />
+    <Content Include="Todd_Howard\97.jpg" />
+    <Content Include="Todd_Howard\98.jpg" />
+    <Content Include="Todd_Howard\99.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+</Project>
