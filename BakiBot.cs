@@ -19,7 +19,7 @@ namespace BakiBot
         {
 
             discord.SetGame("Try >what"); //This is the bot "message of the day"
-            string errortemplate = "Error: user {0} . You do not have the permissions to run this command. If you should, please contact a server admin.";
+            string errortemplate = "Error: user {0} . ah, ah, ah! You didn't say the magic word!"; //This is for error messages when someone without admin privelages attempts to use a command they shouldn't
             Random rand = new Random(); //Allows me to randomly generate a number wherever needed
             string usb = ("E:\\BakiBot\\ConsoleApp1\\ConsoleApp1\\"); //A faster way to use the SendFile command instead of typing out the entire path
             string open = ("``` " + Environment.NewLine);  //There is a function in discord where typing ``` before and after your message
